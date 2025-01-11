@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AOTIME Coin</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        /* Space-themed animated background */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(10, 10, 25, 1) 0%, rgba(5, 5, 15, 1) 100%);
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.8;
+            }
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #000;
+            background: #ffd700;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #ffcc00;
+        }
+    </style>
+</head>
+<body>
+    <div class="background" id="background"></div>
+    <div class="content">
+        <h1>Welcome to AOTIME Coin</h1>
+        <p>AOTIME is the cryptocurrency of the cosmos, blending the infinite possibilities of time and space. Join us on our mission to revolutionize how we think about value and dimensions.</p>
+        <button>Learn More</button>
+    </div>
+
+    <script>
+        // Generate stars for the animated space background
+        const background = document.getElementById('background');
+
+        function createStar() {
+            const star = document.createElement('div');
+            const size = Math.random() * 3;
+
+            star.classList.add('star');
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.animationDuration = `${Math.random() * 2 + 1}s`;
+
+            background.appendChild(star);
+
+            // Remove star after animation ends
+            setTimeout(() => {
+                background.removeChild(star);
+            }, 3000);
+        }
+
+        // Continuously generate stars
+        setInterval(createStar, 100);
+    </script>
+</body>
+</html>
