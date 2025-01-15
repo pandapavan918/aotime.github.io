@@ -1,0 +1,130 @@
+/* General styles */
+@import url("https://fonts.cdnfonts.com/css/season");
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: url("./resources/images/bg-gif.gif") no-repeat center center fixed;
+  background-size: cover;
+  /* font-family: "Arial", sans-serif; */
+  font-family: "Season", sans-serif !important;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.content h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+.content h2 {
+  font-size: 2rem;
+  margin: 10px 0;
+}
+
+.content p {
+  font-size: 1rem;
+  margin: 10px 0 20px 0;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: white;
+  color: black;
+  border: none;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+}
+
+.social-icons {
+  margin-top: 20px;
+}
+
+.social-icons a {
+  margin: 0 10px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.social-icons img {
+  width: 30px;
+  height: 30px;
+}
+
+.bg-vid {
+  position: relative;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+
+/* Responsive styles for tablets */
+@media (max-width: 768px) {
+  .content h1 {
+    font-size: 2rem;
+  }
+
+  .content h2 {
+    font-size: 1.8rem;
+  }
+
+  .content p {
+    font-size: 0.9rem;
+  }
+
+  button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .social-icons img {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+/* Responsive styles for mobile devices */
+@media (max-width: 480px) {
+  .content h1 {
+    font-size: 1.5rem;
+  }
+
+  .content h2 {
+    font-size: 1.5rem;
+  }
+
+  .content p {
+    font-size: 0.8rem;
+  }
+
+  button {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  .social-icons img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .social-icons a {
+    margin: 0 5px;
+  }
+}
