@@ -4,13 +4,70 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AOTIME</title>
-    <link
-      rel="icon"
-      type="image/png"
-      href="./resources/icons/favicon.png"
-      style="width: 2px; height: 2px"
-    />
+    <link rel="icon" type="image/png" href="./resources/icons/favicon512.png" />
     <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* Popup Overlay Styling */
+      .popup-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0.3s, opacity 0.3s;
+        z-index: 1000;
+      }
+
+      /* Popup Box Styling */
+      .popup {
+        background: darkred;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        width: 90%;
+        max-width: 400px;
+      }
+
+      .popup h2 {
+        margin-bottom: 10px;
+        font-size: 1.5rem;
+      }
+
+      .popup p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+        color: white;
+      }
+
+      /* Close Button Styling */
+      .close-btn {
+        background-color: #ff5c5c;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background 0.3s;
+      }
+
+      .close-btn:hover {
+        background-color: #e04444;
+      }
+
+      /* Show Popup Class */
+      .popup-overlay.show {
+        visibility: visible;
+        opacity: 1;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -41,6 +98,35 @@
         </div>
       </div>
     </div>
+
+    <!-- Disclaimer Popup -->
+    <div class="popup-overlay" id="disclaimerPopup">
+      <div class="popup">
+        <h2>Disclaimer</h2>
+        <p>
+          Please ensure you verify the Coin's Contract Address (CA) correctly
+          before making any purchase. We are not responsible for losses due to
+          errors.
+        </p>
+        <button class="close-btn" id="closePopupBtn">Close</button>
+      </div>
+    </div>
+
+    <script>
+      // Show the popup on page load
+      document.addEventListener("DOMContentLoaded", () => {
+        const popup = document.getElementById("disclaimerPopup");
+        const closeBtn = document.getElementById("closePopupBtn");
+
+        // Display the popup
+        popup.classList.add("show");
+
+        // Close the popup on button click
+        closeBtn.addEventListener("click", () => {
+          popup.classList.remove("show");
+        });
+      });
+    </script>
     <script src="script.js"></script>
   </body>
 </html>
