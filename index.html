@@ -24,48 +24,101 @@
         z-index: 1000;
       }
 
-      /* Popup Box Styling */
+      iframe > footer {
+        display: none !important;
+      }
+
+      .group[data-theme="dark"] .group-data-\[theme\=dark\]\:text-zinc-400 {
+        display: none !important;
+      }
+
+      /* Popup Box Styling with RGB Border */
+      @keyframes rgb-border {
+        0% {
+          border-color: red;
+        }
+        25% {
+          border-color: blue;
+        }
+        50% {
+          border-color: green;
+        }
+        75% {
+          border-color: yellow;
+        }
+        100% {
+          border-color: red;
+        }
+      }
+
       .popup {
-        background: darkred;
+        background: black;
         border-radius: 10px;
         padding: 20px;
         text-align: center;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
         width: 90%;
-        max-width: 400px;
+        max-width: 500px;
+        border: 5px solid red;
+        animation: rgb-border 3s infinite;
       }
 
-      .popup h2 {
-        margin-bottom: 10px;
-        font-size: 1.5rem;
+      @media (max-width: 600px) {
+        .popup {
+          width: 95%;
+          max-width: 90%;
+        }
       }
 
-      .popup p {
-        font-size: 1rem;
-        margin-bottom: 20px;
-        color: white;
-      }
-
-      /* Close Button Styling */
-      .close-btn {
-        background-color: #ff5c5c;
-        border: none;
-        color: white;
-        padding: 10px 20px;
-        font-size: 1rem;
+      /* Chatbot Bubble Icon */
+      .chatbot-icon {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background: #007bff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         cursor: pointer;
-        border-radius: 5px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
         transition: background 0.3s;
       }
 
-      .close-btn:hover {
-        background-color: #e04444;
+      .chatbot-icon:hover {
+        background: #0056b3;
+      }
+
+      .chatbot-icon img {
+        width: 30px;
+        height: 30px;
       }
 
       /* Show Popup Class */
       .popup-overlay.show {
         visibility: visible;
         opacity: 1;
+      }
+
+      /* CMD AI Button */
+      .cmd-ai-btn {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #ff5733;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background 0.3s;
+      }
+
+      .cmd-ai-btn:hover {
+        background: #e04e2b;
       }
     </style>
   </head>
@@ -76,57 +129,47 @@
         <h2>Launching soon!</h2>
         <p>We are currently making some improvements to our website!</p>
         <button id="notify-btn">Notify Me</button>
-        <div class="social-icons">
-          <a href="https://t.me/aotimecanchangefuture"
-            ><img
-              class="icons"
-              src="./resources/icons/telegram-icon.png"
-              alt="Telegram"
-          /></a>
-          <a href="https://discord.gg/QNSXFGJmPt"
-            ><img
-              class="icons"
-              src="./resources/icons/discord-icon.png"
-              alt="Discord"
-          /></a>
-          <a href="https://x.com/aotime918"
-            ><img
-              class="icons"
-              src="./resources/icons/twitter-icon.png"
-              alt="Twitter"
-          /></a>
-        </div>
       </div>
     </div>
 
-    <!-- Disclaimer Popup -->
-    <div class="popup-overlay" id="disclaimerPopup">
+    <!-- CMD AI Button -->
+    <button class="cmd-ai-btn" id="cmdAiBtn">cmdAI</button>
+
+    <!-- Chatbot Bubble Icon -->
+    <div class="chatbot-icon" id="chatbotIcon" style="display: none">
+      <img src="./resources/icons/trm.jpeg" alt="Chatbot" />
+    </div>
+
+    <!-- Chatbot Popup -->
+    <div class="popup-overlay" id="chatbotPopup">
       <div class="popup">
-        <h2>Disclaimer</h2>
-        <p>
-          Please ensure you verify the Coin's Contract Address (CA) correctly
-          before making any purchase. We are not responsible for losses due to
-          errors.
-        </p>
-        <button class="close-btn" id="closePopupBtn">Close</button>
+        <iframe
+          src="https://www.chatbase.co/chatbot-iframe/Fc1awckFoGxvmXUW-DiIl"
+          width="100%"
+          style="height: 500px; border: none"
+        ></iframe>
+        <button class="close-btn" id="closeChatbotPopup">Close</button>
       </div>
     </div>
 
     <script>
-      // Show the popup on page load
-      document.addEventListener("DOMContentLoaded", () => {
-        const popup = document.getElementById("disclaimerPopup");
-        const closeBtn = document.getElementById("closePopupBtn");
+      // Chatbot Popup Logic
+      function openChatbotPopup() {
+        document.getElementById("chatbotPopup").classList.add("show");
+      }
 
-        // Display the popup
-        popup.classList.add("show");
+      document
+        .getElementById("chatbotIcon")
+        .addEventListener("click", openChatbotPopup);
+      document
+        .getElementById("cmdAiBtn")
+        .addEventListener("click", openChatbotPopup);
 
-        // Close the popup on button click
-        closeBtn.addEventListener("click", () => {
-          popup.classList.remove("show");
+      document
+        .getElementById("closeChatbotPopup")
+        .addEventListener("click", () => {
+          document.getElementById("chatbotPopup").classList.remove("show");
         });
-      });
     </script>
-    <script src="script.js"></script>
   </body>
 </html>
