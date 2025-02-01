@@ -63,6 +63,21 @@
         animation: rgb-border 3s infinite;
       }
 
+      .popup2 {
+        background: darkred;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        width: 90%;
+        max-width: 400px;
+      }
+
+      .popup2 h2 {
+        margin-bottom: 10px;
+        font-size: 1.5rem;
+      }
+
       @media (max-width: 600px) {
         .popup {
           width: 95%;
@@ -102,6 +117,34 @@
         opacity: 1;
       }
 
+      .popup2 p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+        color: white;
+      }
+
+      /* Close Button Styling */
+      .close-btn {
+        background-color: #ff5c5c;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background 0.3s;
+      }
+
+      .close-btn:hover {
+        background-color: #e04444;
+      }
+
+      /* Show Popup Class */
+      .popup-overlay.show {
+        visibility: visible;
+        opacity: 1;
+      }
+
       /* CMD AI Button */
       .cmd-ai-btn {
         position: fixed;
@@ -129,6 +172,38 @@
         <h2>Launching soon!</h2>
         <p>We are currently making some improvements to our website!</p>
         <button id="notify-btn">Notify Me</button>
+        <div class="social-icons">
+          <a href="https://t.me/aotimecanchangefuture"
+            ><img
+              class="icons"
+              src="./resources/icons/telegram-icon.png"
+              alt="Telegram"
+          /></a>
+          <a href="https://discord.gg/QNSXFGJmPt"
+            ><img
+              class="icons"
+              src="./resources/icons/discord-icon.png"
+              alt="Discord"
+          /></a>
+          <a href="https://x.com/aotime918"
+            ><img
+              class="icons"
+              src="./resources/icons/twitter-icon.png"
+              alt="Twitter"
+          /></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="popup-overlay" id="disclaimerPopup">
+      <div class="popup2">
+        <h2>Disclaimer</h2>
+        <p>
+          Please ensure you verify the Coin's Contract Address (CA) correctly
+          before making any purchase. We are not responsible for losses due to
+          errors.
+        </p>
+        <button class="close-btn" id="closePopupBtn">Close</button>
       </div>
     </div>
 
@@ -143,8 +218,14 @@
     <!-- Chatbot Popup -->
     <div class="popup-overlay" id="chatbotPopup">
       <div class="popup">
-        <iframe
+        <!-- <iframe
           src="https://www.chatbase.co/chatbot-iframe/Fc1awckFoGxvmXUW-DiIl"
+          width="100%"
+          style="height: 500px; border: none"
+        ></iframe> -->
+
+        <iframe
+          src="https://cmdai.zapier.app/"
           width="100%"
           style="height: 500px; border: none"
         ></iframe>
@@ -153,6 +234,20 @@
     </div>
 
     <script>
+      // Show the popup on page load
+      document.addEventListener("DOMContentLoaded", () => {
+        const popup = document.getElementById("disclaimerPopup");
+        const closeBtn = document.getElementById("closePopupBtn");
+
+        // Display the popup
+        popup.classList.add("show");
+
+        // Close the popup on button click
+        closeBtn.addEventListener("click", () => {
+          popup.classList.remove("show");
+        });
+      });
+
       // Chatbot Popup Logic
       function openChatbotPopup() {
         document.getElementById("chatbotPopup").classList.add("show");
@@ -171,5 +266,6 @@
           document.getElementById("chatbotPopup").classList.remove("show");
         });
     </script>
+    <script src="script.js"></script>
   </body>
 </html>
