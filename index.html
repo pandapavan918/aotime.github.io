@@ -220,16 +220,25 @@
       <div class="popup">
         <!-- <iframe
           src="https://www.chatbase.co/chatbot-iframe/Fc1awckFoGxvmXUW-DiIl"
+           src="https://cmdai.zapier.app/"
+          width="100%"
+          style="height: 500px; border: none"
+        ></iframe> -->
+
+        <!-- <iframe
+          src="//code.tidio.co/z9aojzdbzr9hkzg6i5dknrbua0rdbxuw.js"
           width="100%"
           style="height: 500px; border: none"
         ></iframe> -->
 
         <iframe
-          src="https://cmdai.zapier.app/"
+          src="https://www.chatbase.co/chatbot-iframe/Fc1awckFoGxvmXUW-DiIl"
           width="100%"
           style="height: 500px; border: none"
+          id="iframe"
         ></iframe>
         <button class="close-btn" id="closeChatbotPopup">Close</button>
+        <!-- <button class="close-btn" id="test" onclick="test()">test</button> -->
       </div>
     </div>
 
@@ -251,6 +260,22 @@
       // Chatbot Popup Logic
       function openChatbotPopup() {
         document.getElementById("chatbotPopup").classList.add("show");
+        const p = document.getElementsByTagName("footer");
+        console.log(p, "lol");
+
+        const c = document.getElementsByClassName("shrink-0");
+        console.log(c, "cc");
+      }
+
+      function test() {
+        const p = document.getElementsByTagName("p");
+        console.log(p, "lol");
+
+        const c = document.getElementById("iframe");
+        console.log(c, "cc");
+        console.log(c.html, "doc");
+        const iframeDoc = c.contentDocument || c.contentWindow.document;
+        console.log(iframeDoc, "ifd");
       }
 
       document
@@ -267,5 +292,9 @@
         });
     </script>
     <script src="script.js"></script>
+    <script
+      src="//code.tidio.co/z9aojzdbzr9hkzg6i5dknrbua0rdbxuw.js"
+      async
+    ></script>
   </body>
 </html>
